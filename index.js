@@ -20,3 +20,20 @@ const getUserChoice = () => {
     return choice;
 };
 
+// choice comparison, winner determination
+const determineWinner = (userChoice, computerChoice) => {
+    if (userChoice === computerChoice) {
+        return "It's a tie!";
+    }
+    
+    if (
+        (userChoice === "rock" && computerChoice === "scissors") ||
+        (userChoice === "scissors" && computerChoice === "paper") ||
+        (userChoice === "paper" && computerChoice === "rock") 
+    ) {
+        return "You win!";
+    } else {
+        return "Computer wins!";
+    }
+};
+
