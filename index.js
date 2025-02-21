@@ -37,3 +37,18 @@ const determineWinner = (userChoice, computerChoice) => {
     }
 };
 
+// Call all functions to play
+const playGame = () => {
+    const userChoice = getUserChoice();
+    const computerChoice = getComputerChoice();
+    
+    console.log(`You chose: ${userChoice}`);
+    console.log(`You chose: ${computerChoice}`);
+    
+    console.log(determineWinner(userChoice, computerChoice));
+};
+    
+// Start game
+playGame();
+
+
