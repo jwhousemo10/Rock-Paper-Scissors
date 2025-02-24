@@ -1,5 +1,5 @@
 
-// COMPUTER's RANDOM CHOICE
+// Computer's random choice
 const getComputerChoice = () => { // variable cannot store multiple variables inside it directly; needs function that creates or modifies variables.                     
     const choices = ["rock", "paper", "scissors"]; // zero-based index positioning
     const randomIndex = Math.floor(Math.random() * choices.length);     // - Math.random() generates a random decimal number between 0 - 0.9.
@@ -38,16 +38,50 @@ const determineWinner = (userChoice, computerChoice) => {
     }
 };
 
-// Call all functions to play
+// Call to play, multiple rounds
 const playGame = () => {
-    const userChoice = getUserChoice();
-    const computerChoice = getComputerChoice();
+    let rounds = Number(prompt("How many rounds do you want to play?"));
+    let playerScore = 0;
+    let computerScore = 0;
+
+    for (let i = 0; i < rounds; i++) {
+        console.log(`Round ${i + 1} of ${rounds}`);
+
+        const userChoice = getUserChoice();
+        const computerChoice = getComputerChoice();
     
-    console.log(`You chose: ${userChoice}`);
-    console.log(`Computer chose: ${computerChoice}`);
+        console.log(`You chose: ${userChoice}`);
+        console.log(`Computer chose: ${computerChoice}`);
     
-    console.log(determineWinner(userChoice, computerChoice));
-};
+        let result = determineWinner(userChoice, computerChoice);
+        console.log(result);
+
+        // Update scores based on result
+        if (result === "You win!") {
+            playerScore++;
+        } else if (result === "Computer wins!") {
+            computerScore++;
+        }
+
+        console.log(`Score: Player ${playerScore} - ${computerScore} Computer`);
+    }
+
+    // Final result
+    console.log("Final Score: ");
+    console.log(`Player: ${playerScore}`);
+    console.log(`Computer: ${computerScore}`);
+
+    if (playerScore > computerScore) {
+        console.log("You won the game!");
+    } else if (computerScore > playerScore) {
+        console.log("Computer won the game!");
+    } else {
+        console.log("It's a tie!");
+    }
+
+    console.log("Game Over! Thanks for playing.");
+
+}
     
 // Start game
 playGame();
